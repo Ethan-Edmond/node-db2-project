@@ -1,14 +1,22 @@
 const db = require('../../data/db-config');
 
-console.log(db);
-exports.getAll = async () => {
-  return db('cars');
+const getAll = async () => {
+  return await db('cars');
 };
 
-exports.getById = async (id) => {
-  return db('cars').where({id}).first();
+const getById = async (id) => {
+  return await db('cars').where({id}).first();
 };
 
-exports.create = async () => {
-  return 'create wired';
+const create = async (car) => {
+  // INSERT INTO cars ()
+  const [newId] = await db('cars').insert(car);
+  return await getById(newId);
+};
+
+
+module.exports = {
+  getAll,
+  getById,
+  create
 };

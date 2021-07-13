@@ -23,7 +23,10 @@ router.get('/:id', checkCarId, ({car}, res, next) => {
 });
 
 router.post('/', checkCarPayload, checkVinNumberValid, checkVinNumberUnique, (req, res, next) => {
-  Cars.create(req.car)
+  const {vin, make, model, mileage, title, transmission} = req.body;
+  Cars.create({
+    vin, make, model, mileage, title, transmission
+  })
     .then(newCar => {
       res.status(201).json(newCar);
     })
