@@ -1,11 +1,13 @@
-const getAll = () => {
-  // DO YOUR MAGIC
-}
+const db = require('../../data/db-config');
 
-const getById = () => {
-  // DO YOUR MAGIC
-}
+exports.getAll = async () => {
+  return 'getAll wired';
+};
 
-const create = () => {
-  // DO YOUR MAGIC
-}
+exports.getById = async () => {
+  return 'getById wired';
+};
+
+exports.create = async () => {
+  return 'create wired';
+};
