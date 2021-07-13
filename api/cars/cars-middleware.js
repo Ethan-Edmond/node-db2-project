@@ -56,7 +56,17 @@ exports.checkVinNumberValid = ({body: {vin}}, res, next) => {
   }
 };
 
-exports.checkVinNumberUnique = (req, res, next) => {
-  console.log('checkVinNumberUnique wired');
-  next();
+exports.checkVinNumberUnique = ({body: {vin}}, res, next) => {
+  Cars.getAll()
+    .then(cars => {
+      const vins = new Set(cars.map(car => car.vin));
+      if (vins.has(vin)) {
+        res.status(400).json({
+          message: `vin ${vin} already exists`
+        });
+      } else {
+        next();
+      }
+    })
+    .catch(next);
 };
