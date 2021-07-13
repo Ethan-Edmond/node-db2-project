@@ -18,12 +18,8 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.get('/:id', checkCarId, (req, res, next) => {
-  Cars.getById(req.params.id)
-    .then(car => {
-      res.json(car);
-    })
-    .catch(next);
+router.get('/:id', checkCarId, ({car}, res, next) => {
+  res.json(car);
 });
 
 router.post('/', checkCarPayload, checkVinNumberValid, checkVinNumberUnique, (req, res, next) => {

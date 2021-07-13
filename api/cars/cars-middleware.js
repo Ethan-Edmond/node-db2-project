@@ -1,8 +1,19 @@
 const Cars = require('./cars-model');
 
 exports.checkCarId = (req, res, next) => {
-  console.log('checkCarId wired');
-  next();
+  const id = req.params.id;
+  Cars.getById(id)
+    .then(car => {
+      if (car) {
+        req.car = car;
+        next();
+      } else {
+        res.status(404).json({
+          message: `car with id ${id} is not found`
+        });
+      }
+    })
+    .catch(next);
 };
 
 exports.checkCarPayload = (req, res, next) => {

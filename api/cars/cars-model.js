@@ -5,7 +5,7 @@ exports.getAll = async () => {
 };
 
 exports.getById = async () => {
-  return 'getById wired';
+  return 'This is a car';
 };
 
 exports.create = async () => {
