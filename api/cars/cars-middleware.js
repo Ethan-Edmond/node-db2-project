@@ -1,15 +1,21 @@
-const checkCarId = (req, res, next) => {
-  // DO YOUR MAGIC
-}
+const Cars = require('./cars-model');
 
-const checkCarPayload = (req, res, next) => {
-  // DO YOUR MAGIC
-}
+exports.checkCarId = (req, res, next) => {
+  console.log('checkCarId wired');
+  next();
+};
 
-const checkVinNumberValid = (req, res, next) => {
-  // DO YOUR MAGIC
-}
+exports.checkCarPayload = (req, res, next) => {
+  console.log('checkCarPayload wired');
+  next();
+};
 
-const checkVinNumberUnique = (req, res, next) => {
-  // DO YOUR MAGIC
-}
+exports.checkVinNumberValid = (req, res, next) => {
+  console.log('checkVinNumberValid wired');
+  next();
+};
+
+exports.checkVinNumberUnique = (req, res, next) => {
+  console.log('checkVinNumberUnique wired');
+  next();
+};
