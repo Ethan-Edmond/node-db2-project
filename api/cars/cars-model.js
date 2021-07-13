@@ -1,11 +1,12 @@
 const db = require('../../data/db-config');
 
+console.log(db);
 exports.getAll = async () => {
-  return 'getAll wired';
+  return db('cars');
 };
 
-exports.getById = async () => {
-  return 'This is a car';
+exports.getById = async (id) => {
+  return db('cars').where({id}).first();
 };
 
 exports.create = async () => {
