@@ -17,8 +17,32 @@ exports.checkCarId = (req, res, next) => {
 };
 
 exports.checkCarPayload = (req, res, next) => {
-  console.log('checkCarPayload wired');
-  next();
+  const { vin, make, model, mileage } = req.body;
+  let emptyField = '';
+
+  if (vin) {
+    if (make) {
+      if (model) {
+        if (mileage === undefined) {
+          emptyField = 'mileage';
+        }
+      } else {
+        emptyField = 'model';
+      }
+    } else {
+      emptyField = 'make';
+    }
+  } else {
+    emptyField = 'vin';
+  }
+
+  if (emptyField.length) {
+    res.status(400).json({
+      message: `${emptyField} is missing`
+    });
+  } else {
+    next();
+  }
 };
 
 exports.checkVinNumberValid = (req, res, next) => {
