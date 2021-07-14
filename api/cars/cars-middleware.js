@@ -21,20 +21,19 @@ exports.checkCarPayload = (req, res, next) => {
   const { vin, make, model, mileage } = req.body;
   let emptyField = '';
 
-  if (vin) {
-    if (make) {
-      if (model) {
-        if (mileage === undefined) {
-          emptyField = 'mileage';
-        }
-      } else {
-        emptyField = 'model';
-      }
-    } else {
-      emptyField = 'make';
-    }
-  } else {
+  switch(undefined) {
+  case vin:
     emptyField = 'vin';
+    break;
+  case make:
+    emptyField = 'make';
+    break;
+  case model:
+    emptyField = 'model';
+    break;
+  case mileage:
+    emptyField = 'mileage';
+    break;
   }
 
   if (emptyField.length) {
