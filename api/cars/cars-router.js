@@ -4,7 +4,8 @@ const {
   checkCarId,
   checkCarPayload,
   checkVinNumberValid,
-  checkVinNumberUnique
+  checkVinNumberUnique,
+  checkVinUniqueOrMatch
 } = require('./cars-middleware');
 
 const router = require('express').Router();
@@ -29,6 +30,23 @@ router.post('/', checkCarPayload, checkVinNumberValid, checkVinNumberUnique, (re
   })
     .then(newCar => {
       res.status(201).json(newCar);
+    })
+    .catch(next);
+});
+
+router.put('/:id', checkCarId, checkCarPayload, checkVinNumberValid, checkVinUniqueOrMatch, (req, res, next) => {
+  Cars.update(req.params.id, req.body)
+    .then(updated => {
+      res.json(updated);
+    })
+    .catch(next);
+});
+
+router.delete('/:id', checkCarId, (req, res, next) => {
+  const deletedCar = req.car;
+  Cars.remove(req.params.id)
+    .then(deletedNum => {
+      res.json(deletedCar);
     })
     .catch(next);
 });

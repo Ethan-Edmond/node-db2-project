@@ -70,3 +70,21 @@ exports.checkVinNumberUnique = ({body: {vin}}, res, next) => {
     })
     .catch(next);
 };
+
+exports.checkVinUniqueOrMatch = (req, res, next) => {
+  const id = Number(req.params.id);
+  const vin = req.body.vin;
+  Cars.getAll()
+    .then(cars => {
+      const diffCars = cars.filter(car => car.id !== id);
+      const diffVins = new Set(diffCars.map(car => car.vin));
+      if (diffVins.has(vin)) {
+        res.status(400).json({
+          message: `vin ${vin} is used by another car`
+        });
+      } else {
+        next();
+      }
+    })
+    .catch(next);
+};

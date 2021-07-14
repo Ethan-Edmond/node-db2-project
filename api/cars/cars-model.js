@@ -14,9 +14,19 @@ const create = async (car) => {
   return await getById(newId);
 };
 
+const update = async (id, car) => {
+  await db('cars').where({id}).update(car);
+  return await getById(id);
+};
+
+const remove = async (id) => {
+  return await db('cars').where({id}).del();
+};
 
 module.exports = {
   getAll,
   getById,
-  create
+  create,
+  update,
+  remove
 };
