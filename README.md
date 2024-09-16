@@ -12,17 +12,17 @@ There are two possible ways to submit your project. Your instructor should have 
 
 #### Option A - Codegrade
 
-- [ ] Fork and clone the repository.
-- [ ] Open the assignment in Canvas and click on the "Set up git" option.
-- [ ] Follow instructions to set up Codegrade's Webhook and Deploy Key.
-- [ ] Push your first commit: `git commit --allow-empty -m "first commit" && git push`.
-- [ ] Check to see that Codegrade has accepted your git submssion.
+- [x] Fork and clone the repository.
+- [x] Open the assignment in Canvas and click on the "Set up git" option.
+- [x] Follow instructions to set up Codegrade's Webhook and Deploy Key.
+- [x] Push your first commit: `git commit --allow-empty -m "first commit" && git push`.
+- [x] Check to see that Codegrade has accepted your git submssion.
 
 #### Option B - Pull Request
 
-- [ ] Fork and clone the repository.
-- [ ] Implement your project in a `firstname-lastname` branch.
-- [ ] Create a pull request of `firstname-lastname` against your `main` branch.
+- [x] Fork and clone the repository.
+- [x] Implement your project in a `firstname-lastname` branch.
+- [x] Create a pull request of `firstname-lastname` against your `main` branch.
 - [ ] Open the assignment in Canvas and submit your pull request.
 
 ### Task 2: Minimum Viable Product
@@ -30,7 +30,7 @@ There are two possible ways to submit your project. Your instructor should have 
 Build a RESTful API for an "cars" resource. The client for this API is a car dealer.
 
 #### Cars Schema
-
+- [x] Finished
 The critical information for each car is the vin, make, model, and mileage. They also track transmission type (manual, automatic...) and status of the title (clean, salvage...), but this information is not always immediately known. Write the "up" and "down" functions inside the `data/migrations/01-make_cars_table.js` migration file to satisfy the following schema:
 
 | field        | data type        | metadata                                            |
@@ -44,7 +44,7 @@ The critical information for each car is the vin, make, model, and mileage. They
 | transmission | string           | optional                                            |
 
 #### Write Model Functions
-
+- [ ] Finished
 - Write the following db access functions inside `api/cars/cars-model.js` using Knex:
 
   - `getAll` resolves to an array of car records (or an empty array)
